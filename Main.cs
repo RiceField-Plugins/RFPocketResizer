@@ -65,12 +65,12 @@ namespace PocketResizer
 				if (w * h > bestPocket.Width * bestPocket.Height)
 					bestPocket = new Pocket(w, h);
 			}
-			return bestPocket;
 #if DEBUG
 			Logger.LogWarning($"[PocketResizer] Player: {player.CharacterName}");
 			Logger.LogWarning("[PocketResizer] Found Permissions: " + string.Join(", ",enumerable.ToArray()));
 			Logger.LogWarning($"[PocketResizer] Pocket size taken: {bestPocket.Width} × {bestPocket.Height}");
 #endif
+			return bestPocket;
 		}
 		private static void RevertPocket()
 		{
