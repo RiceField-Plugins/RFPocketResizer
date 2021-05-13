@@ -60,10 +60,26 @@ namespace PocketResizer
 			var bestPocket = new Pocket (0, 0);
 			foreach (var pocket in enumerable)
 			{
-				var w = byte.Parse(pocket.Split('.')[1]);
-				var h = byte.Parse(pocket.Split('.')[2]);
-				if (w * h > bestPocket.Width * bestPocket.Height)
-					bestPocket = new Pocket(w, h);
+				var pocketSplit = pocket.Split('.');
+				if (pocketSplit.Length != 3)
+				{
+					Logger.LogError("[PocketResizer] Error: PermissionPrefix must not contain '.'");
+					Logger.LogError("[PocketResizer] Correct format: 'permprefix'.'width'.'height'");
+					continue;
+				}
+				try
+				{
+					byte.TryParse(pocketSplit[1], out var w);
+					byte.TryParse(pocketSplit[2], out var h);
+					if (w * h > bestPocket.Width * bestPocket.Height)
+						bestPocket = new Pocket(w, h);
+				}
+				catch (Exception ex)
+				{
+					Logger.LogError("[PocketResizer] Error: " + ex);
+					
+					bestPocket = new Pocket(5, 3);
+				}
 			}
 #if DEBUG
 			Logger.LogWarning($"[PocketResizer] Player: {player.CharacterName}");
