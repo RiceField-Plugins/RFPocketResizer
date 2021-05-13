@@ -12,12 +12,12 @@ namespace PocketResizer
 {
     public class Main : RocketPlugin<Configuration>
     {
-		private static Main _instance;
+		private static Main _inst;
 		private static Configuration _conf;
 
 		protected override void Load()
 		{
-			_instance = this;
+			_inst = this;
 			_conf = Configuration.Instance;
 			
 			UnturnedPlayerEvents.OnPlayerUpdateGesture += Events_OnGestureChanged;
@@ -37,11 +37,11 @@ namespace PocketResizer
 			Logger.LogWarning("[PocketResizer] Plugin unloaded successfully!");
 		}
 
-		private void Events_OnGestureChanged(UnturnedPlayer player, UnturnedPlayerEvents.PlayerGesture gesture)
+		private static void Events_OnGestureChanged(UnturnedPlayer player, UnturnedPlayerEvents.PlayerGesture gesture)
 		{
 			if (gesture != UnturnedPlayerEvents.PlayerGesture.InventoryOpen)
 				return;
-			GetBestSize(player, out var bestPocket);
+			var bestPocket = GetBestSize(player);
 			if (bestPocket == null) 
 				return;
 			player.Inventory.items[2].resize((byte)bestPocket.Width, (byte)bestPocket.Height);
@@ -51,16 +51,13 @@ namespace PocketResizer
 #endif
 		}
 
-		private static void GetBestSize(UnturnedPlayer player, out Pocket bestPocket)
+		private static Pocket GetBestSize(UnturnedPlayer player)
 		{
 			var permissions = player.GetPermissions().Select(a => a.Name).Where(p => p.ToLower().StartsWith($"{_conf.PermissionPrefix}.") && !p.Equals($"{_conf.PermissionPrefix}.", StringComparison.InvariantCultureIgnoreCase));
 			var enumerable = permissions as string[] ?? permissions.ToArray();
 			if (enumerable.Length == 0)
-			{
-				bestPocket = null;
-				return;
-			}
-			bestPocket = new Pocket (0, 0);
+				return null;
+			var bestPocket = new Pocket (0, 0);
 			foreach (var pocket in enumerable)
 			{
 				var w = byte.Parse(pocket.Split('.')[1]);
@@ -68,6 +65,7 @@ namespace PocketResizer
 				if (w * h > bestPocket.Width * bestPocket.Height)
 					bestPocket = new Pocket(w, h);
 			}
+			return bestPocket;
 #if DEBUG
 			Logger.LogWarning($"[PocketResizer] Player: {player.CharacterName}");
 			Logger.LogWarning("[PocketResizer] Found Permissions: " + string.Join(", ",enumerable.ToArray()));
