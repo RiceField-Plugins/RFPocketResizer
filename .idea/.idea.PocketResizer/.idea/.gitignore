@@ -1,0 +1,11 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/.idea.PocketResizer.iml
+/projectSettingsUpdater.xml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../:\IRFAN\Repos\Unturned\My Plugin Source\Rocketmod\PocketResizer\.idea\.idea.PocketResizer\.idea/dataSources/
+/dataSources.local.xml
