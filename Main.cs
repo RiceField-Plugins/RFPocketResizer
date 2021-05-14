@@ -64,7 +64,8 @@ namespace PocketResizer
 				if (pocketSplit.Length != 3)
 				{
 					Logger.LogError("[PocketResizer] Error: PermissionPrefix must not contain '.'");
-					Logger.LogError("[PocketResizer] Correct format: 'permprefix'.'width'.'height'");
+					Logger.LogError($"[PocketResizer] Invalid permission format: {pocket}");
+					Logger.LogError("[PocketResizer] Correct format: 'permPrefix'.'width'.'height'");
 					continue;
 				}
 				try
