@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketResizer", "PocketResizer.csproj", "{4855023E-3DEC-43A6-BA4B-9E5578E0217B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFPocketResizer", "RFPocketResizer.csproj", "{4855023E-3DEC-43A6-BA4B-9E5578E0217B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
