@@ -33,39 +33,41 @@
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Unturned\Assembly-CSharp.dll</HintPath>
+          <HintPath>..\..\..\Libraries\RFRocketMod\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="com.rlabrecque.steamworks.net, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\Libraries\RFRocketMod\com.rlabrecque.steamworks.net.dll</HintPath>
         </Reference>
         <Reference Include="Rocket.API, Version=4.9.3.4, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Rocket\Rocket.API.dll</HintPath>
+          <HintPath>..\..\..\Libraries\RFRocketMod\Rocket.API.dll</HintPath>
         </Reference>
         <Reference Include="Rocket.Core, Version=4.9.3.4, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Rocket\Rocket.Core.dll</HintPath>
+          <HintPath>..\..\..\Libraries\RFRocketMod\Rocket.Core.dll</HintPath>
         </Reference>
         <Reference Include="Rocket.Unturned, Version=4.9.3.13, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Rocket\Rocket.Unturned.dll</HintPath>
+          <HintPath>..\..\..\Libraries\RFRocketMod\Rocket.Unturned.dll</HintPath>
         </Reference>
         <Reference Include="SDG.NetTransport, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Unturned\SDG.NetTransport.dll</HintPath>
-        </Reference>
-        <Reference Include="Steamworks.NET, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Unturned\Steamworks.NET.dll</HintPath>
+          <HintPath>..\..\..\Libraries\RFRocketMod\SDG.NetTransport.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Unturned\UnityEngine.dll</HintPath>
+          <HintPath>..\..\..\Libraries\RFRocketMod\UnityEngine.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\Libraries\Unturned\UnityEngine.CoreModule.dll</HintPath>
+          <HintPath>..\..\..\Libraries\RFRocketMod\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Configuration.cs" />
+        <Compile Include="EventListeners\PlayerEvent.cs" />
         <Compile Include="Plugin.cs" />
         <Compile Include="Models\PocketModel.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Utils\PocketUtil.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
